@@ -1,7 +1,7 @@
 module "container" {
   source                       = "github.com/opsteamhub/terraform-aws-ecs-container-definition"
   container_name               = var.name
-  container_image              = "805246034736.dkr.ecr.${var.region}.amazonaws.com/${var.image}"
+  container_image              = "${var.aws_account}.dkr.ecr.${var.region}.amazonaws.com/${var.image}"
   container_memory             = var.container_memory
   container_memory_reservation = var.container_memory_reservation
   container_cpu                = var.container_cpu

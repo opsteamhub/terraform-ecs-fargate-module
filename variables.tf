@@ -4,6 +4,8 @@ variable "region" {
   description = "The AWS region things are created in"
 }
 
+variable "aws_account" {}
+
 variable "image" {
   description = "Docker image to run in the ECS cluster"
 }
@@ -112,3 +114,4 @@ variable "load_balancer_container_port" {
 variable "cert_domain" {
   default = ""  
 }
+
