@@ -2,9 +2,10 @@
 
 # ALB Security Group: Edit to restrict access to the application
 resource "aws_security_group" "lb" {
-  name        = replace(local.stack_name, "ecs-", "")
+  name        = join("-", ["sg_lb", replace(local.stack_name, "ecs-", "")])
   description = "controls access to the ALB"
   vpc_id      = var.vpc_id
+
 
   ingress {
     protocol    = "tcp"
@@ -20,7 +21,7 @@ resource "aws_security_group" "lb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name          = replace(local.stack_name, "ecs-", "")
+    Name          = join("-", ["sg_lb", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
   }
@@ -29,7 +30,7 @@ resource "aws_security_group" "lb" {
 
 # Traffic to the ECS cluster should only come from the ALB
 resource "aws_security_group" "ecs_tasks" {
-  name        = replace(local.stack_name, "ecs-", "")
+  name        = join("-", ["sg_task", replace(local.stack_name, "ecs-", "")])
   description = "allow inbound access from the ALB only"
   vpc_id      = var.vpc_id
 
@@ -47,7 +48,7 @@ resource "aws_security_group" "ecs_tasks" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name          = replace(local.stack_name, "ecs-", "")
+    Name          = join("-", ["sg_task", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
   }
