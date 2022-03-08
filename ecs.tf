@@ -1,8 +1,8 @@
 resource "aws_ecs_cluster" "main" {
-  name = join("-", ["cluster", var.environment, var.name])
+  name = replace(local.stack_name, "ecs-", "")
  
   tags = {
-    Name          = join("-", ["cluster", var.environment, var.name])
+    Name          = replace(local.stack_name, "ecs-", "")
     ProvisionedBy = var.provisioned
     Environment   = var.environment
   }
@@ -10,7 +10,7 @@ resource "aws_ecs_cluster" "main" {
 }
 
 resource "aws_ecs_task_definition" "default" {
-  family                   = join("-", ["task-definition", var.environment, var.name])
+  family                   = replace(local.stack_name, "ecs-", "")
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -21,7 +21,7 @@ resource "aws_ecs_task_definition" "default" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = join("-", ["service", var.environment, var.name])
+  name            = replace(local.stack_name, "ecs-", "")
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.default.arn
   desired_count   = var.desired_container_count
@@ -40,7 +40,7 @@ resource "aws_ecs_service" "main" {
   }
 
   tags = {
-    Name          = join("-", ["service", var.environment, var.name])
+    Name          = replace(local.stack_name, "ecs-", "")
     ProvisionedBy = var.provisioned
     Environment   = var.environment
   }
