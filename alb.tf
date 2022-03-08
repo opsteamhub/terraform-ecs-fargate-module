@@ -4,7 +4,7 @@ resource "aws_alb" "main" {
   security_groups = [aws_security_group.lb.id]
 
   tags = {
-    Name          = join("-", ["lb", var.environment, var.name])
+    Name          = join("-", [var.environment, var.name])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
   }
@@ -12,7 +12,7 @@ resource "aws_alb" "main" {
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = join("-", ["tg", var.environment, var.name])
+  name        = join("-", [var.environment, var.name])
   port        = var.target_group_port
   protocol    = var.protocol
   vpc_id      = var.vpc_id
@@ -30,7 +30,7 @@ resource "aws_alb_target_group" "app" {
   }
 
   tags = {
-    Name          = join("-", ["tg", var.environment, var.name])
+    Name          = join("-", [var.environment, var.name])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
   }
