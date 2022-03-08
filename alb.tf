@@ -1,5 +1,5 @@
 resource "aws_alb" "main" {
-  name            = replace("ecs-teste-app", "ecs-", "")
+  name            = join("-", [replace(var.environment, var.name, "ecs-", "")])
   subnets         = var.subnets
   security_groups = [aws_security_group.lb.id]
 
