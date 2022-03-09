@@ -118,3 +118,11 @@ variable "cert_domain" {
 variable "mantainer" {
   default = "OpsTeam"  
 }
+
+variable "healthy_threshold" {
+  default = "5"
+}
+
+variable "unhealthy_threshold" {
+  default = "3"  
+}
