@@ -115,3 +115,6 @@ variable "cert_domain" {
   default = ""  
 }
 
+variable "mantainer" {
+  default = "OpsTeam"  
+}

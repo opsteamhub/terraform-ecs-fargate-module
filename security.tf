@@ -2,7 +2,7 @@
 
 # ALB Security Group: Edit to restrict access to the application
 resource "aws_security_group" "lb" {
-  name        = join("-", ["sg_lb", replace(local.stack_name, "ecs-", "")])
+  name        = join("-", ["SG_LB", replace(local.stack_name, "ecs-", "")])
   description = "controls access to the ALB"
   vpc_id      = var.vpc_id
 
@@ -21,16 +21,17 @@ resource "aws_security_group" "lb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name          = join("-", ["sg_lb", replace(local.stack_name, "ecs-", "")])
+    Name          = join("-", ["SG_LB", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
+    Mantainer     = var.mantainer
   }
 
 }
 
 # Traffic to the ECS cluster should only come from the ALB
 resource "aws_security_group" "ecs_tasks" {
-  name        = join("-", ["sg_task", replace(local.stack_name, "ecs-", "")])
+  name        = join("-", ["SG_TASK", replace(local.stack_name, "ecs-", "")])
   description = "allow inbound access from the ALB only"
   vpc_id      = var.vpc_id
 
@@ -48,9 +49,10 @@ resource "aws_security_group" "ecs_tasks" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name          = join("-", ["sg_task", replace(local.stack_name, "ecs-", "")])
+    Name          = join("-", ["SG_TASK", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
+    Mantainer     = var.mantainer
   }
 
 }

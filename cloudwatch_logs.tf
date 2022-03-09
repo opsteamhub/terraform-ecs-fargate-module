@@ -6,5 +6,6 @@ resource "aws_cloudwatch_log_group" "main" {
     Name          = local.log_name
     ProvisionedBy = var.provisioned
     Environment   = var.environment
+    Mantainer     = var.mantainer
   }
 }

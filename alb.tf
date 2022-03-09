@@ -1,18 +1,19 @@
 resource "aws_alb" "main" {
-  name            = replace(local.stack_name, "ecs-", "")
+  name            = join("-", ["lb", replace(local.stack_name, "ecs-", "")])
   subnets         = var.subnets
   security_groups = [aws_security_group.lb.id]
 
   tags = {
-    Name          = replace(local.stack_name, "ecs-", "")
+    Name          = join("-", ["lb", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
+    Mantainer     = var.mantainer
   }
 
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = replace(local.stack_name, "ecs-", "")
+  name        = join("-", ["tg", replace(local.stack_name, "ecs-", "")])
   port        = var.target_group_port
   protocol    = var.protocol
   vpc_id      = var.vpc_id
@@ -30,9 +31,10 @@ resource "aws_alb_target_group" "app" {
   }
 
   tags = {
-    Name          = replace(local.stack_name, "ecs-", "")
+    Name          = join("-", ["tg", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
     Environment   = var.environment
+    Mantainer     = var.mantainer
   }
 
 }
