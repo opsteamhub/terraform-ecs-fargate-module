@@ -100,11 +100,11 @@ variable "target_group_port" {
 }
 
 variable "health_check_interval" {
-  default = "10"  
+  default = "20"  
 }
 
 variable "health_check_timeout" {
-  default = "5"  
+  default = "7"  
 }
 
 variable "load_balancer_container_port" {
