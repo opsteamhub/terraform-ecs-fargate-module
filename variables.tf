@@ -44,7 +44,7 @@ variable "health_check_protocol" {
 }
 
 variable "health_check_port" {
-  default = "80"
+  default = "3000"
 }
 
 variable "subnets" {
