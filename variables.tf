@@ -18,7 +18,6 @@ variable "ecr_image" {
 
 variable "container_image" {
   description = "Container image to run in the ECS cluster"
-  default     = ""
 }
 
 variable "desired_container_count" {
