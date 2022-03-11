@@ -40,6 +40,9 @@ resource "aws_alb_target_group" "app" {
     Mantainer     = var.mantainer
   }
 
+  lifecycle {
+    create_before_destroy = true
+  }  
 }
 
 # Redirect all traffic from the ALB to the target group
