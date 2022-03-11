@@ -47,10 +47,6 @@ resource "aws_ecs_service" "main" {
     Mantainer     = var.mantainer
   }
 
-  lifecycle {
-    create_before_destroy = true
-  }
-
   depends_on = [aws_alb_listener.default, aws_iam_role_policy_attachment.ecs_task_execution_role]
 }
 
