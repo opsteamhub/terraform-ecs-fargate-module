@@ -16,6 +16,11 @@ variable "ecr_image" {
   default     = ""
 }
 
+variable "container_image" {
+  description = "Container image to run in the ECS cluster"
+  default     = ""
+}
+
 variable "desired_container_count" {
   description = "Number of docker containers to run"
   default     = 1
