@@ -6,8 +6,14 @@ variable "region" {
 
 variable "aws_account" {}
 
-variable "image" {
+variable "docker_image" {
   description = "Docker image to run in the ECS cluster"
+  default = ""
+}
+
+variable "ecr_image" {
+  description = "ECR AWS image to run in the ECS cluster"
+  default = ""
 }
 
 variable "desired_container_count" {
