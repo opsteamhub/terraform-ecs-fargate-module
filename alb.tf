@@ -20,7 +20,7 @@ resource "aws_alb_target_group" "app" {
   target_type = var.target_type
 
   health_check {
-    healthy_threshold   = var.healthy_threshold 
+    healthy_threshold   = var.healthy_threshold
     unhealthy_threshold = var.unhealthy_threshold
     interval            = var.health_check_interval
     protocol            = var.health_check_protocol
@@ -28,7 +28,7 @@ resource "aws_alb_target_group" "app" {
     timeout             = var.health_check_timeout
     path                = var.health_check_path
   }
-  
+
   lifecycle {
     create_before_destroy = true
   }

@@ -7,21 +7,21 @@ module "container" {
   container_cpu                = var.container_cpu
   environment                  = var.container_environment
   port_mappings = [
-   {
-    containerPort = 3000
-    hostPort      = 3000
-    protocol      = "tcp"
-   }
+    {
+      containerPort = 3000
+      hostPort      = 3000
+      protocol      = "tcp"
+    }
   ]
   log_configuration = {
     logDriver = "awslogs"
     options = {
-      "awslogs-group": "${local.log_name}",
-      "awslogs-region": "${var.region}",
-      "awslogs-stream-prefix": "ecs"
+      "awslogs-group" : "${local.log_name}",
+      "awslogs-region" : "${var.region}",
+      "awslogs-stream-prefix" : "ecs"
     }
     secretOptions = null
-   }
+  }
 
 }
 

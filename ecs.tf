@@ -1,13 +1,13 @@
 resource "aws_ecs_cluster" "main" {
   name = replace(local.stack_name, "ecs-", "")
- 
+
   tags = {
     Name          = replace(local.stack_name, "ecs-", "")
     ProvisionedBy = var.provisioned
     Environment   = var.environment
     Mantainer     = var.mantainer
   }
-  
+
 }
 
 resource "aws_ecs_task_definition" "default" {

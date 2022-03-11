@@ -8,12 +8,12 @@ variable "aws_account" {}
 
 variable "docker_image" {
   description = "Docker image to run in the ECS cluster"
-  default = ""
+  default     = ""
 }
 
 variable "ecr_image" {
   description = "ECR AWS image to run in the ECS cluster"
-  default = ""
+  default     = ""
 }
 
 variable "desired_container_count" {
@@ -102,27 +102,27 @@ variable "provisioned" {
 variable "environment" {}
 
 variable "target_group_port" {
-  default = "3000"  
+  default = "3000"
 }
 
 variable "health_check_interval" {
-  default = "20"  
+  default = "20"
 }
 
 variable "health_check_timeout" {
-  default = "7"  
+  default = "7"
 }
 
 variable "load_balancer_container_port" {
-  default = "3000" 
+  default = "3000"
 }
 
 variable "cert_domain" {
-  default = ""  
+  default = ""
 }
 
 variable "mantainer" {
-  default = "OpsTeam"  
+  default = "OpsTeam"
 }
 
 variable "healthy_threshold" {
@@ -130,5 +130,5 @@ variable "healthy_threshold" {
 }
 
 variable "unhealthy_threshold" {
-  default = "3"  
+  default = "3"
 }
