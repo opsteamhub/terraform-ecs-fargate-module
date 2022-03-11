@@ -93,7 +93,7 @@ variable "provisioned" {
   default     = "Terraform"
 }
 
-variable "environment" {}
+variable "Environment" {}
 
 variable "target_group_port" {
   default = "3000"
