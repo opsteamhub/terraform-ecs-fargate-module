@@ -128,5 +128,10 @@ variable "unhealthy_threshold" {
 }
 
 variable "environment_files" {
-  default = ""  
+  type = list(object({
+    value = string
+    type  = string
+  }))
+  description = "One or more files containing the environment variables to pass to the container. This maps to the --env-file option to docker run. The file must be hosted in Amazon S3. This option is only available to tasks using the EC2 launch type. This is a list of maps"
+  default     = null
 }
