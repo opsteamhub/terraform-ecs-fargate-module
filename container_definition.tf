@@ -6,6 +6,7 @@ module "container" {
   container_memory_reservation = var.container_memory_reservation
   container_cpu                = var.container_cpu
   environment                  = var.container_environment
+  environmentFiles             = var.environment_files
   
   port_mappings = [
     {

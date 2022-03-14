@@ -126,3 +126,7 @@ variable "healthy_threshold" {
 variable "unhealthy_threshold" {
   default = "3"
 }
+
+variable "environment_files" {
+  default = ""  
+}
