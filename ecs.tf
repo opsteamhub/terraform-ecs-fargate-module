@@ -40,6 +40,11 @@ resource "aws_ecs_service" "main" {
     container_port   = var.load_balancer_container_port
   }
 
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = ["task_definition"]
+  }  
+
   tags = {
     Name          = join("-", ["serv", replace(local.stack_name, "ecs-", "")])
     ProvisionedBy = var.provisioned
