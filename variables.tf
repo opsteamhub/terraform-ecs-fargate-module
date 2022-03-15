@@ -4,7 +4,9 @@ variable "region" {
   description = "The AWS region things are created in"
 }
 
-variable "aws_account" {}
+variable "aws_account" {
+  default = ""
+}
 
 variable "container_image" {
   description = "Container image to run in the ECS cluster"
